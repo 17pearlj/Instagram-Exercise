@@ -15,6 +15,7 @@
 		FFC6212C22D3F72C001CA8D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6212B22D3F72C001CA8D8 /* main.m */; };
 		FFC6213622D3F72C001CA8D8 /* julia_instagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6213522D3F72C001CA8D8 /* julia_instagramTests.m */; };
 		FFC6214122D3F72C001CA8D8 /* julia_instagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6214022D3F72C001CA8D8 /* julia_instagramUITests.m */; };
+		FFC6214F22D3F84B001CA8D8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FFC6214E22D3F84B001CA8D8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		FFC6213C22D3F72C001CA8D8 /* julia-instagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "julia-instagramUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6214022D3F72C001CA8D8 /* julia_instagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = julia_instagramUITests.m; sourceTree = "<group>"; };
 		FFC6214222D3F72C001CA8D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFC6214E22D3F84B001CA8D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				FFC6213422D3F72C001CA8D8 /* julia-instagramTests */,
 				FFC6213F22D3F72C001CA8D8 /* julia-instagramUITests */,
 				FFC6211A22D3F72B001CA8D8 /* Products */,
+				FFC6214E22D3F84B001CA8D8 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -237,6 +240,7 @@
 			files = (
 				FFC6212922D3F72C001CA8D8 /* LaunchScreen.storyboard in Resources */,
 				FFC6212622D3F72C001CA8D8 /* Assets.xcassets in Resources */,
+				FFC6214F22D3F84B001CA8D8 /* README.md in Resources */,
 				FFC6212422D3F72B001CA8D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "julia-instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "julia-instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
