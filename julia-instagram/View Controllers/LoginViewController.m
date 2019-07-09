@@ -11,6 +11,9 @@
 #import "RegisterViewController.h"
 
 @interface LoginViewController ()
+
+
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 - (IBAction)loginButton:(id)sender;
@@ -34,8 +37,10 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"toHome" sender:nil];
+            //[self performSegueWithIdentifier:@"toHome" sender:nil];
+            [self.navigationController popViewControllerAnimated:YES];
             // display view controller that needs to shown after successful login
+            
         }
     }];
 }
@@ -68,7 +73,10 @@
 }
 
 - (IBAction)needsToRegister:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"register plz");
+   [self.navigationController popViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

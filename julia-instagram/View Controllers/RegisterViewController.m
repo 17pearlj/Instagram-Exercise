@@ -69,7 +69,9 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"toLogin" sender:nil];
+            LoginViewController *vc = [[LoginViewController alloc] init];;
+            [self.navigationController pushViewController:vc animated:YES];
+            //[self performSegueWithIdentifier:@"toLogin" sender:nil];
             
             // manually segue to logged in view
         }

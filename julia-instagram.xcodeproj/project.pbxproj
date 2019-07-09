@@ -10,6 +10,8 @@
 		837B92222A39D348B5BE0E4E /* Pods_julia_instagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DD74F7331A1F8E3968DAC0 /* Pods_julia_instagramTests.framework */; };
 		C53A6ACFA2320696E90B8714 /* Pods_julia_instagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3CD4C4B9C5407AB20E8AB4 /* Pods_julia_instagramUITests.framework */; };
 		FB570E697D51FA7451C466A1 /* Pods_julia_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E3B430417F4E8C399BDB2F /* Pods_julia_instagram.framework */; };
+		FF7FA75F22D4720800762A09 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA75E22D4720800762A09 /* CameraViewController.m */; };
+		FF7FA76622D4748400762A09 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7FA76522D4748400762A09 /* Post.m */; };
 		FFC6211E22D3F72B001CA8D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6211D22D3F72B001CA8D8 /* AppDelegate.m */; };
 		FFC6212422D3F72B001CA8D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC6212222D3F72B001CA8D8 /* Main.storyboard */; };
 		FFC6212622D3F72C001CA8D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC6212522D3F72C001CA8D8 /* Assets.xcassets */; };
@@ -17,7 +19,6 @@
 		FFC6212C22D3F72C001CA8D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6212B22D3F72C001CA8D8 /* main.m */; };
 		FFC6213622D3F72C001CA8D8 /* julia_instagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6213522D3F72C001CA8D8 /* julia_instagramTests.m */; };
 		FFC6214122D3F72C001CA8D8 /* julia_instagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6214022D3F72C001CA8D8 /* julia_instagramUITests.m */; };
-		FFC6214F22D3F84B001CA8D8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FFC6214E22D3F84B001CA8D8 /* README.md */; };
 		FFC6215522D3FDB8001CA8D8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6215422D3FDB8001CA8D8 /* LoginViewController.m */; };
 		FFC6215822D3FF65001CA8D8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6215722D3FF65001CA8D8 /* RegisterViewController.m */; };
 		FFC6215B22D40C8B001CA8D8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6215A22D40C8B001CA8D8 /* HomeViewController.m */; };
@@ -50,6 +51,10 @@
 		87C53120585A7BA3AB12BB22 /* Pods-julia-instagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-julia-instagramTests.release.xcconfig"; path = "Target Support Files/Pods-julia-instagramTests/Pods-julia-instagramTests.release.xcconfig"; sourceTree = "<group>"; };
 		C22B82A87D202634BD3AC368 /* Pods-julia-instagramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-julia-instagramTests.debug.xcconfig"; path = "Target Support Files/Pods-julia-instagramTests/Pods-julia-instagramTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DCD34D273C0A9978F3DC4FDB /* Pods-julia-instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-julia-instagram.debug.xcconfig"; path = "Target Support Files/Pods-julia-instagram/Pods-julia-instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		FF7FA75D22D4720800762A09 /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		FF7FA75E22D4720800762A09 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		FF7FA76422D4748400762A09 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = SOURCE_ROOT; };
+		FF7FA76522D4748400762A09 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = SOURCE_ROOT; };
 		FFC6211922D3F72B001CA8D8 /* julia-instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "julia-instagram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6211C22D3F72B001CA8D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFC6211D22D3F72B001CA8D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,7 +69,6 @@
 		FFC6213C22D3F72C001CA8D8 /* julia-instagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "julia-instagramUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6214022D3F72C001CA8D8 /* julia_instagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = julia_instagramUITests.m; sourceTree = "<group>"; };
 		FFC6214222D3F72C001CA8D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFC6214E22D3F84B001CA8D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFC6215322D3FDB8001CA8D8 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FFC6215422D3FDB8001CA8D8 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FFC6215622D3FF65001CA8D8 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FF7FA76322D4747C00762A09 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF7FA76422D4748400762A09 /* Post.h */,
+				FF7FA76522D4748400762A09 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FFC6211022D3F72B001CA8D8 = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +162,8 @@
 		FFC6211B22D3F72B001CA8D8 /* julia-instagram */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FA76322D4747C00762A09 /* Models */,
 				FFC6215222D3FDA0001CA8D8 /* View Controllers */,
-				FFC6214E22D3F84B001CA8D8 /* README.md */,
 				FFC6211C22D3F72B001CA8D8 /* AppDelegate.h */,
 				FFC6211D22D3F72B001CA8D8 /* AppDelegate.m */,
 				FFC6212222D3F72B001CA8D8 /* Main.storyboard */,
@@ -183,6 +196,8 @@
 		FFC6215222D3FDA0001CA8D8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FF7FA75D22D4720800762A09 /* CameraViewController.h */,
+				FF7FA75E22D4720800762A09 /* CameraViewController.m */,
 				FFC6215322D3FDB8001CA8D8 /* LoginViewController.h */,
 				FFC6215422D3FDB8001CA8D8 /* LoginViewController.m */,
 				FFC6215622D3FF65001CA8D8 /* RegisterViewController.h */,
@@ -302,7 +317,6 @@
 			files = (
 				FFC6212922D3F72C001CA8D8 /* LaunchScreen.storyboard in Resources */,
 				FFC6212622D3F72C001CA8D8 /* Assets.xcassets in Resources */,
-				FFC6214F22D3F84B001CA8D8 /* README.md in Resources */,
 				FFC6212422D3F72B001CA8D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,8 +431,10 @@
 				FFC6215822D3FF65001CA8D8 /* RegisterViewController.m in Sources */,
 				FFC6215522D3FDB8001CA8D8 /* LoginViewController.m in Sources */,
 				FFC6212C22D3F72C001CA8D8 /* main.m in Sources */,
+				FF7FA75F22D4720800762A09 /* CameraViewController.m in Sources */,
 				FFC6215B22D40C8B001CA8D8 /* HomeViewController.m in Sources */,
 				FFC6211E22D3F72B001CA8D8 /* AppDelegate.m in Sources */,
+				FF7FA76622D4748400762A09 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

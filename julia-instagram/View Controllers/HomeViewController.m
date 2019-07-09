@@ -11,56 +11,44 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 
-@interface HomeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface HomeViewController () 
 - (IBAction)didLogout:(id)sender;
+- (IBAction)takePicture:(id)sender;
 @end
 
 @implementation HomeViewController
 
 - (IBAction)didLogout:(id)sender {
+    NSLog(@"logout pushed");
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
     }];
-    [self.navigationController popViewControllerAnimated:true];
+   // LoginViewController *vc = [[LoginViewController alloc] init];;
+    //[self.navigationController popToViewController:vc animated:true];
+    //[self.navigationController popViewControllerAnimated:YES];
+   // [self dismissViewControllerAnimated:YES completion:nill];
+    [self dismissViewControllerAnimated:YES completion:nil];
+   //[self performSegueWithIdentifier:@"toLogin2" sender:nil];
+}
+
+- (IBAction)takePicture:(id)sender {
+    [self performSegueWithIdentifier:@"toCamera" sender:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-    // Do any additional setup after loading the view.
+    NSLog(@"home page");
+   
 }
+////
+/////*
+//#pragma mark - Navigation
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    // Do something with the images (based on your use case)
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    // Get the new view controller using [segue destinationViewController].
+//    // Pass the selected object to the new view controller.
+//}
+//*/
 
 @end
