@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "Parse/Parse.h"
 #import "RegisterViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -45,7 +46,10 @@
     }];
 }
 
-
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+    // dismisses keyboard fun call
+}
 
 /*
 #pragma mark - Navigation
@@ -63,10 +67,15 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            NSLog(@"CHECK!");
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"toHome" sender:nil];
+           // [self performSegueWithIdentifier:@"toHome" sender:nil];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *tabController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
+            appDelegate.window.rootViewController = tabController;
             // display view controller that needs to shown after successful login
         }
     }];
@@ -74,7 +83,10 @@
 
 - (IBAction)needsToRegister:(id)sender {
     NSLog(@"register plz");
-   [self.navigationController popViewControllerAnimated:YES];
+//    RegisterViewController* vc = [[RegisterViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    [self performSegueWithIdentifier:@"toRegister" sender:nil];
+   //[self.navigationController popViewControllerAnimated:YES];
     //[self dismissViewControllerAnimated:YES completion:nil];
 }
 

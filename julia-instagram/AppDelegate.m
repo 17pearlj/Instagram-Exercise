@@ -21,6 +21,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         
         configuration.applicationId = @"julia-instagram-1999";
@@ -39,10 +40,11 @@
 //            NSLog(@"Error: %@", error.description);
 //        }
 //    }];
+    
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
     }
     
  

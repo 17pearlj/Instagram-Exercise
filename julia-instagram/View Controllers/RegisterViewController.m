@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "Parse/Parse.h"
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -69,9 +70,13 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            LoginViewController *vc = [[LoginViewController alloc] init];;
-            [self.navigationController pushViewController:vc animated:YES];
+//            LoginViewController *vc = [[LoginViewController alloc] init];;
+//            [self.navigationController pushViewController:vc animated:YES];
             //[self performSegueWithIdentifier:@"toLogin" sender:nil];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"auth"];
+            appDelegate.window.rootViewController = navigationController;
             
             // manually segue to logged in view
         }
