@@ -27,9 +27,11 @@
 }
 
 - (void)registerUser {
+    // add key to user defaults
+
     // initialize a user object
     PFUser *newUser = [PFUser user];
-    
+//    [[NSUserDefaults standardUserDefaults] setValue:newUser forKey:@"current_user"];
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
@@ -75,7 +77,7 @@
             //[self performSegueWithIdentifier:@"toLogin" sender:nil];
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"auth"];
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
             appDelegate.window.rootViewController = navigationController;
             
             // manually segue to logged in view

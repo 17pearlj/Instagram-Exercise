@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "username_button.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,8 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TimelineViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (weak, nonatomic) IBOutlet UIImageView *pic;
-
-@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet username_button *username;
+@property (assign, nonatomic) BOOL liked;
+//@property (weak, nonatomic) IBOutlet UIButton< *username;
+//@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *createdAt;
+@property (weak, nonatomic) IBOutlet UIButton *picButton;
 @property (strong, nonatomic) Post *post;
 @end
 

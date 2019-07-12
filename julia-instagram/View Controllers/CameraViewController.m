@@ -9,6 +9,7 @@
 #import "CameraViewController.h"
 #import "Post.h"
 #import "AppDelegate.h"
+#import "HomeViewController.h"
 
 @interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *caption;
@@ -54,15 +55,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    [self dismissViewControllerAnimated:YES completion:nil];
+    HomeViewController *homeVC = [segue destinationViewController];
+    homeVC.justPosted = YES;
+    NSLog(@"JUST POSTED");
 }
-*/
+
 - (IBAction)clickHome:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -78,7 +80,13 @@
         }
         else{
             NSLog(@"Successfully took action on the following Tweet");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UITabBarController *tabController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
+            appDelegate.window.rootViewController = tabController;
+//            HomeViewController *homeVC;
+//            homeVC.justPosted = YES;
+//            NSLog(@"JUST POSTED");
             //[self.navigationController popViewControllerAnimated:YES];
         }
     }];

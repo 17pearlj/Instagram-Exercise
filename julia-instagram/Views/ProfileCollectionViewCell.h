@@ -1,8 +1,8 @@
 //
-//  PostViewController.h
+//  ProfileCollectionViewCell.h
 //  julia-instagram
 //
-//  Created by jpearl on 7/9/19.
+//  Created by jpearl on 7/10/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PostViewController : UIViewController
+@interface ProfileCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) Post *post;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *pic;
 @end
 
 NS_ASSUME_NONNULL_END

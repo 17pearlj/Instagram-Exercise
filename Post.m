@@ -17,6 +17,7 @@
 @dynamic likeCount;
 @dynamic commentCount;
 @dynamic createdAt;
+@dynamic likeSet;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -30,11 +31,13 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.likeSet = [NSMutableArray new];
     //newPost.createdAt = createdAt;
     
     
     [newPost saveInBackgroundWithBlock: completion];
 }
+
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
 

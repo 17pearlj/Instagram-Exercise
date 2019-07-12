@@ -1,8 +1,8 @@
 //
-//  HomeViewController.h
+//  username_button.h
 //  julia-instagram
 //
-//  Created by jpearl on 7/8/19.
+//  Created by jpearl on 7/11/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController
-@property (assign, nonatomic) BOOL justPosted;
+@interface username_button : UIButton
+@property (nonatomic, strong) NSString *objectId;
 @end
 
 NS_ASSUME_NONNULL_END

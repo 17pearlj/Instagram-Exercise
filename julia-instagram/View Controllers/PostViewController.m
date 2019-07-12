@@ -8,6 +8,8 @@
 
 #import "PostViewController.h"
 #import "DateTools.h"
+#import "UIImageView+AFNetworking.h"
+#import "Post.h"
 
 @interface PostViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -15,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *likes;
 @property (weak, nonatomic) IBOutlet UILabel *comments;
 @property (weak, nonatomic) IBOutlet UILabel *createdAt;
+
+@property (assign, nonatomic) BOOL liked;
 
 @property (weak, nonatomic) IBOutlet UIImageView *pic;
 @end
@@ -37,14 +41,32 @@
     // Do any additional setup after loading the view.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)hitLike:(id)sender {
+    int addition = 1;
+    NSString *pic = @"heart2";
+    NSString *username1 = [PFUser currentUser].username;
+    NSLog(@"%d", [self.post.likeSet containsObject:username1]);
+    if ([self.post.likeSet containsObject:username1]){
+        [self.post.likeSet removeObject:username1];
+        addition = -1;
+        pic = @"heart";
+    } else {
+        [self.post.likeSet addObject:username1];
+    }
+    self.post[@"likeCount"] = @([self.post.likeCount intValue] + addition);
+    
+    self.post[@"likeSet"] = self.post.likeSet;
+    [self.likeButton setImage:[UIImage imageNamed:pic] forState:UIControlStateNormal];
+    [self.post saveInBackground];
+    
+    
+    
+    
 }
-*/
+
+
+
+
 
 @end
