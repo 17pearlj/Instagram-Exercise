@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **30** hours spent in total
 
 ## User Stories
 
@@ -35,12 +35,13 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] List anything else that you can get done to improve the app functionality!
+likes are coded into data table as a set so user cannot like same post more than once (not shown in gif)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. focus on how to implement comments on a larger scale for posts
+2. optimal way to minimize function repetition
 
 ## Video Walkthrough
 
@@ -59,7 +60,8 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Describe any challenges encountered while building the app:
+Wiring the navigation controllers without instructed prompts initially was a challenge as I had to understand the functionality of navigation controllers.
 
 ## License
 
