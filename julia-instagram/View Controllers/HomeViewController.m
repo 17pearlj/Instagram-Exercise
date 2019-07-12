@@ -79,17 +79,11 @@
 - (IBAction)didLogout:(id)sender {
     NSLog(@"logout pushed");
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
     }];
-   // LoginViewController *vc = [[LoginViewController alloc] init];;
-    //[self.navigationController popToViewController:vc animated:true];
-    //[self.navigationController popViewControllerAnimated:YES];
-   // [self dismissViewControllerAnimated:YES completion:nill];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"notAuth"];
     appDelegate.window.rootViewController = navigationController;
-   //[self performSegueWithIdentifier:@"toLogin2" sender:nil];
 }
 
 - (IBAction)takePicture:(id)sender {
@@ -105,11 +99,18 @@
     //[SVProgressHUD show];
     TimelineViewCell *cell = [self.timeline dequeueReusableCellWithIdentifier: @"Time"];
     Post *post =  self.posts[indexPath.row];
+    cell.propic.layer.cornerRadius = 25;
+    cell.propic.clipsToBounds = YES;
+    PFFileObject *propicImageFile = (PFFileObject *)post.author[@"propic"];
+    [propicImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if(!error){
+            cell.propic.image = [UIImage imageWithData:imageData];
+        }
+    }];
     cell.caption.text = post.caption;
     cell.post = post;
-    //cell.username.text = post.author.username;
     [cell.username setTitle:post.author.username forState:UIControlStateNormal];
-    cell.username.objectId = post.author.objectId;
+    cell.username.author = post.author;
     if ([post.likeSet containsObject:[PFUser currentUser].username]){
         [cell.likeButton setImage:[UIImage imageNamed:@"heart2"] forState:UIControlStateNormal];
         
@@ -201,7 +202,7 @@
         NSLog(@"happy and i know it");
         username_button *button = sender;
         ProfileViewController *profileVC = [segue destinationViewController];
-        profileVC.objectIdString = button.objectId;
+        profileVC.author = button.author;
     }
     if ([sender isKindOfClass:TimelineViewCell.class]){
         TimelineViewCell *tappedCell = sender;

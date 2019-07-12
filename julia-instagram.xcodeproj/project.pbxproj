@@ -19,6 +19,7 @@
 		FFA40ABB22D55F5B00710C68 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA40ABA22D55F5B00710C68 /* PostViewController.m */; };
 		FFBDA29822D6A07000613DD3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBDA29722D6A07000613DD3 /* ProfileViewController.m */; };
 		FFBDA29B22D80ECA00613DD3 /* username_button.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBDA29A22D80ECA00613DD3 /* username_button.m */; };
+		FFBDA29E22D83AAB00613DD3 /* editProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBDA29D22D83AAB00613DD3 /* editProfileViewController.m */; };
 		FFC6211E22D3F72B001CA8D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC6211D22D3F72B001CA8D8 /* AppDelegate.m */; };
 		FFC6212422D3F72B001CA8D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC6212222D3F72B001CA8D8 /* Main.storyboard */; };
 		FFC6212922D3F72C001CA8D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFC6212722D3F72C001CA8D8 /* LaunchScreen.storyboard */; };
@@ -73,6 +74,8 @@
 		FFBDA29722D6A07000613DD3 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		FFBDA29922D80ECA00613DD3 /* username_button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = username_button.h; sourceTree = "<group>"; };
 		FFBDA29A22D80ECA00613DD3 /* username_button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = username_button.m; sourceTree = "<group>"; };
+		FFBDA29C22D83AAB00613DD3 /* editProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = editProfileViewController.h; sourceTree = "<group>"; };
+		FFBDA29D22D83AAB00613DD3 /* editProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = editProfileViewController.m; sourceTree = "<group>"; };
 		FFC6211922D3F72B001CA8D8 /* julia-instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "julia-instagram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6211C22D3F72B001CA8D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFC6211D22D3F72B001CA8D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 		FFC6215222D3FDA0001CA8D8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FFBDA29C22D83AAB00613DD3 /* editProfileViewController.h */,
+				FFBDA29D22D83AAB00613DD3 /* editProfileViewController.m */,
 				FF7FA75D22D4720800762A09 /* CameraViewController.h */,
 				FF7FA75E22D4720800762A09 /* CameraViewController.m */,
 				FFBDA29622D6A07000613DD3 /* ProfileViewController.h */,
@@ -476,6 +481,7 @@
 				FFC6211E22D3F72B001CA8D8 /* AppDelegate.m in Sources */,
 				FFBDA29822D6A07000613DD3 /* ProfileViewController.m in Sources */,
 				FF7FA76622D4748400762A09 /* Post.m in Sources */,
+				FFBDA29E22D83AAB00613DD3 /* editProfileViewController.m in Sources */,
 				FF7FA77222D544F500762A09 /* TimelineViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

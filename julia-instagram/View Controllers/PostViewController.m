@@ -55,7 +55,7 @@
         [self.post.likeSet addObject:username1];
     }
     self.post[@"likeCount"] = @([self.post.likeCount intValue] + addition);
-    
+    self.likes.text = self.post.likeCount + addition
     self.post[@"likeSet"] = self.post.likeSet;
     [self.likeButton setImage:[UIImage imageNamed:pic] forState:UIControlStateNormal];
     [self.post saveInBackground];

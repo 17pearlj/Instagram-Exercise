@@ -1,5 +1,5 @@
 //
-//  username_button.h
+//  editProfileViewController.h
 //  julia-instagram
 //
 //  Created by jpearl on 7/11/19.
@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface username_button : UIButton
-@property (nonatomic, strong) PFUser *author;
+@interface editProfileViewController : UIViewController
+
 @end
 
 NS_ASSUME_NONNULL_END

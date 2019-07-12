@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
-@property (assign, nonatomic) NSString *objectIdString;
+@property (nonatomic, strong) PFUser *author;
 @end
 
 NS_ASSUME_NONNULL_END

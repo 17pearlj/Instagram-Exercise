@@ -36,7 +36,7 @@
         [self.post.likeSet addObject:[PFUser currentUser].username];
     }
     self.post[@"likeCount"] = @([self.post.likeCount intValue] + addition);
-
+    
     self.post[@"likeSet"] = self.post.likeSet;
     [self.likeButton setImage:[UIImage imageNamed:pic] forState:UIControlStateNormal];
     [self.post saveInBackground];

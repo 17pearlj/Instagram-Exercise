@@ -14,6 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TimelineViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *propic;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (weak, nonatomic) IBOutlet UIImageView *pic;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;

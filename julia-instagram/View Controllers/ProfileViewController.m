@@ -10,8 +10,9 @@
 #import "ProfileCollectionViewCell.h"
 #import "Post.h"
 #import "PostViewController.h"
+#import "AppDelegate.h"
 
-@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *count;
 @property (weak, nonatomic) IBOutlet UIImageView *propic;
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSArray<Post *> *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) int postLoaded;
+
 
 
 
@@ -32,6 +34,7 @@
     self.propic.clipsToBounds = YES;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.collectionView insertSubview:refreshControl atIndex:0];
@@ -44,13 +47,21 @@
     postQuery.limit = self.postLoaded;
     if ([self.restorationIdentifier isEqual: @"persProf"]){
         NSLog(@"MY PROF");
-        self.objectIdString = [PFUser currentUser].objectId;
+        self.author = [PFUser currentUser];
     }
-    [postQuery whereKey:@"author" containsString:self.objectIdString];
-    self.username.text = [PFUser currentUser].username;
+    if (self.author[@"propic"]){
+        PFFileObject *propicImageFile = (PFFileObject *)self.author[@"propic"];
+        [propicImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                self.propic.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
+    [postQuery whereKey:@"author" containsString:self.author.objectId];
+    self.username.text = self.author.username;
     
 //    PFUser *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"current_user"];
-    NSLog(@"DATA %@", [PFUser currentUser].username);
+    NSLog(@"DATA %@", self.author.username);
 
     NSLog(@"query constructed!");
     // fetch data asynchronously
@@ -128,6 +139,61 @@
             NSLog(@"%@", post.createdAt);
         }
     }
+}
+
+- (IBAction)changeProf:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    // Do something with the images (based on your use case)
+    self.propic.image = editedImage;
+    self.propic.image = [self resizeImage:self.propic.image withSize:CGSizeMake(500.0, 500.0)];
+        //self.propic.image = [UIImage imageWithData:self.propic];
+    [PFUser currentUser][@"propic"] = [Post getPFFileFromImage:self.propic.image];
+    [[PFUser currentUser] saveInBackground];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+- (IBAction)post:(id)sender {
+    [self performSegueWithIdentifier:@"toCamera" sender:nil];
+}
+- (IBAction)didLogout:(id)sender {
+    NSLog(@"logout pushed");
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    }];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"notAuth"];
+    appDelegate.window.rootViewController = navigationController;
 }
 
 @end
