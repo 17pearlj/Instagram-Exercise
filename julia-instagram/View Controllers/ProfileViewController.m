@@ -40,13 +40,11 @@
     [self.collectionView insertSubview:refreshControl atIndex:0];
     // construct query
     self.postLoaded = 20;
-    NSLog(@"constructing query!");
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = self.postLoaded;
     if ([self.restorationIdentifier isEqual: @"persProf"]){
-        NSLog(@"MY PROF");
         self.author = [PFUser currentUser];
     }
     if (self.author[@"propic"]){
@@ -59,24 +57,16 @@
     }
     [postQuery whereKey:@"author" containsString:self.author.objectId];
     self.username.text = self.author.username;
-    
-//    PFUser *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"current_user"];
-    NSLog(@"DATA %@", self.author.username);
 
-    NSLog(@"query constructed!");
+
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts.count != 0) {
-            NSLog(@"we have posts!");
             // do something with the data fetched
             self.posts = posts;
             self.count.text = [[NSNumber numberWithLong:posts.count] stringValue];
             [self.collectionView reloadData];
             [self.refreshControl endRefreshing];
-        }
-        else {
-            // handle error
-            NSLog(@"no posts :((");
         }
     }];
     
@@ -115,10 +105,7 @@
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            NSLog(@"we have posts!");
-            // do something with the data fetched
-            
-            //self.tweets = newArray;
+
             self.posts = posts;
             [self.collectionView reloadData];
             [refreshControl endRefreshing];
@@ -135,8 +122,7 @@
             Post *post = self.posts[indexPath.row];
             PostViewController *postVC = [segue destinationViewController];
             postVC.post = post;
-            NSLog(@"POST, %@", post);
-            NSLog(@"%@", post.createdAt);
+
         }
     }
 }
@@ -149,7 +135,7 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        //camera not available
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];
@@ -187,7 +173,6 @@
     [self performSegueWithIdentifier:@"toCamera" sender:nil];
 }
 - (IBAction)didLogout:(id)sender {
-    NSLog(@"logout pushed");
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
     }];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

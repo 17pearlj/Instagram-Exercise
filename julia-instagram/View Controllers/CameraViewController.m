@@ -13,16 +13,13 @@
 
 @interface CameraViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *caption;
-
 @property (weak, nonatomic) IBOutlet UIImageView *readyToPost;
-//@property (strong, nonatomic) UIImage *myPost;
 @end
 
 @implementation CameraViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -30,7 +27,7 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        //camera not available
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];
@@ -39,7 +36,6 @@
 }
 - (IBAction)onTap:(id)sender {
     [self.view endEditing:(YES)];
-    // dismisses keyboard fun call
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
@@ -57,12 +53,9 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     [self dismissViewControllerAnimated:YES completion:nil];
     HomeViewController *homeVC = [segue destinationViewController];
     homeVC.justPosted = YES;
-    NSLog(@"JUST POSTED");
 }
 
 - (IBAction)clickHome:(id)sender {
@@ -75,19 +68,13 @@
 - (IBAction)clickPost:(id)sender {
     [Post postUserImage:self.readyToPost.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError *error) {
         if(error){
-           // [self.navigationController popViewControllerAnimated:YES];
             NSLog(@"Error taking action on tweet: %@", error.localizedDescription);
         }
         else{
-            NSLog(@"Successfully took action on the following Tweet");
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UITabBarController *tabController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
             appDelegate.window.rootViewController = tabController;
-//            HomeViewController *homeVC;
-//            homeVC.justPosted = YES;
-//            NSLog(@"JUST POSTED");
-            //[self.navigationController popViewControllerAnimated:YES];
         }
     }];
     

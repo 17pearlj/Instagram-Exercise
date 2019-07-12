@@ -16,7 +16,7 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "username_button.h"
 #import "ProfileViewController.h"
-//#import "UIScrollView+SVPullToRefresh.h"
+
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 - (IBAction)didLogout:(id)sender;
@@ -60,15 +60,9 @@
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            NSLog(@"we have posts!");
-            
             self.posts = posts;
             [self.timeline reloadData];
             [SVProgressHUD dismiss];
-        }
-        else {
-            // handle error
-            NSLog(@"no posts :((");
         }
     }];
     
@@ -77,7 +71,6 @@
 
 
 - (IBAction)didLogout:(id)sender {
-    NSLog(@"logout pushed");
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
     }];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -96,7 +89,6 @@
     return self.posts.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //[SVProgressHUD show];
     TimelineViewCell *cell = [self.timeline dequeueReusableCellWithIdentifier: @"Time"];
     Post *post =  self.posts[indexPath.row];
     cell.propic.layer.cornerRadius = 25;
@@ -117,7 +109,6 @@
     } else {
         [cell.likeButton setImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
     }
-    //cell.username.text = post.author.username;
     cell.createdAt.text = post.createdAt.timeAgoSinceNow;
     PFFileObject *userImageFile = post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -136,14 +127,9 @@
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = self.postLoaded;
-    NSLog(@"query constructed!");
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            NSLog(@"we have posts!");
-            // do something with the data fetched
-
-            //self.tweets = newArray;
             self.posts = posts;
             [self.timeline reloadData];
         }
@@ -176,7 +162,6 @@
     [postQuery includeKey:@"author"];
     self.postLoaded += 20;
     postQuery.limit = self.postLoaded;
-    NSLog(@"query constructed!");
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (error) {
@@ -199,7 +184,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:UIButton.class]){
-        NSLog(@"happy and i know it");
         username_button *button = sender;
         ProfileViewController *profileVC = [segue destinationViewController];
         profileVC.author = button.author;
@@ -211,8 +195,6 @@
             Post *post = self.posts[indexPath.row];
             PostViewController *postVC = [segue destinationViewController];
             postVC.post = post;
-            NSLog(@"POST, %@", post);
-            NSLog(@"%@", post.createdAt);
             if ([post.likeSet containsObject:[PFUser currentUser].username]){
                 [postVC.likeButton setImage:[UIImage imageNamed:@"heart2"] forState:UIControlStateNormal];
                 

@@ -46,7 +46,6 @@
     int addition = 1;
     NSString *pic = @"heart2";
     NSString *username1 = [PFUser currentUser].username;
-    NSLog(@"%d", [self.post.likeSet containsObject:username1]);
     if ([self.post.likeSet containsObject:username1]){
         [self.post.likeSet removeObject:username1];
         addition = -1;

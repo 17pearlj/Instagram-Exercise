@@ -4,10 +4,7 @@
 //
 //  Created by jpearl on 7/8/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
-// https://julia-instagram.herokuapp.com/
-// parse-dashboard --appId julia-instagram-1999 --masterKey instagram-julia-08-30-1999 --serverURL "https://julia-instagram.herokuapp.com/parse"
 
-//  http://0.0.0.0:4040/apps/julia-instagram-1999/browser/GameScore
 
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
@@ -29,18 +26,6 @@
     }];
     
     [Parse initializeWithConfiguration:config];
-//    PFObject *gameScore = [PFObject objectWithClassName:@"Instagram"];
-//    gameScore[@"score"] = @1337;
-//    gameScore[@"playerName"] = @"Sean Plott";
-//    gameScore[@"cheatMode"] = @NO;
-//    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//        if (succeeded) {
-//            NSLog(@"Object saved!");
-//        } else {
-//            NSLog(@"Error: %@", error.description);
-//        }
-//    }];
-    
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
